@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    (대충 헤더 인클루드)
+    <div>
+        <div class="left">
+            <ul>
+                <li>블로그 정보</li>
+                <li>댓글 관리</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="bolginfo">
+                <h2>블로그 정보</h2>
+                <table>
+                    <tr>
+                        <td>블로그명</td>
+                        <td>{{아이디}님의 블로그}</td>
+                    </tr>
+                    <tr>
+                        <td>별명</td>
+                        <td>{닉네임}</td>
+                    </tr>
+                    <tr>
+                        <td>소개글</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+            </div><!--bolginfo-->
+            <div class="replyinfo">
+                <h2>댓글관리</h2>
+                <table>
+                    <th>작성자</th>
+                    <th>내용</th>
+                    <th>관리</th>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><button>삭제</button></td>
+                    </tr>
+                </table>
+                <select name="search" id="">
+                    <option value="작성자">작성자</option>
+                    <option value="내용">작성자</option>
+                </select>
+                <input type="text">
+                <button>검색</button>
+                <button>전체보기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color:#333;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.hide {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/*main*/
+#mypage{
+    width: 1000px;
+    display: flex;
+    margin: 50px auto 0 auto;
+}
+
+.left{
+    width: 200px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.right{
+    width: 800px;
+}
