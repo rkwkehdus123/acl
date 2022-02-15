@@ -1,5 +1,9 @@
 package org.kdy.mapper;
 
-public class BoardMapper {
+import org.kdy.domain.BoardDTO;
+
+public interface BoardMapper {
+
+    public void write(BoardDTO board);
 
 }

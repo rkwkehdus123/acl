@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #476177;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color:#333;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.hide {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+header{
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+    color: #F4BF3D;
+}
+
+.login{
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.headh1{
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+.container{
+    width: 1000px;
+    height: 800px;
+    margin: 50px auto 0 auto;
+    font-size: 18px;
+    line-height: 2.5em;
+}
+
+.Wpost{
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    position: relative;
+    height: 730px;
+    border: 3px solid #F4BF3D;
+}
+
+.Wpost div{
+    background-color: white;
+    padding-left: 20px;
+}
+
+.writeGo{
+    padding-top: 20px;
+    border-bottom: 1px solid black;
+    font-weight: 700;
+}
+
+.titletext{
+    background-color: rgb(252, 240, 221);
+    border: 1px solid #333;
+    padding: 2px 5px;
+    
+}
+
+input{
+    position: absolute;
+    top: 118px;
+    width: 870px;
+    height: 28px;
+    border: 1px solid #333;
+    border-left: none;
+    padding-left: 10px;
+}
+
+.img{
+    padding-top: 10px;
+    margin-bottom: -10px;
+}
+
+.img a{
+    background-color: white;
+}
+
+.img img{
+    width: 3%;
+    background-color: white;
+}
+
+textarea{
+    border-radius: 10px;
+}
+
+button{
+    position: absolute;
+    bottom: 20px;
+    right: 23px;
+    padding: 7px 20px;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+input, textarea{
+    background-color: white;
+}
+

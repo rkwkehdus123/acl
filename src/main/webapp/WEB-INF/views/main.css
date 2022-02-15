@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #476177;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color:#333;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.hide {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+header{
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+    color: #F4BF3D;
+}
+
+.login{
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.headh1{
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+/*main*/
+.container{
+    width: 1000px;
+    display: flex;
+    margin: 50px auto 0 auto;
+}
+
+.left{
+    width: 200px;
+    color: #F4BF3D;
+}
+
+.profile_image{
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    margin-top: 40px;
+}
+
+.profile_text{
+    margin-top: 15px;
+    margin-left: 10px;
+    line-height: 2em;
+}
+
+.Lcategory{
+    margin-top: 25px;
+    margin-left: 10px;
+    line-height: 2em;
+}
+
+.datepicker{
+    margin-top: 25px;
+}
+
+.datepicker span{
+    margin-left: 10px;
+}
+
+.right{
+    width: 800px;
+}
+
+.Rcategory{
+    background-color: white;
+}
+
+.Mpost{
+    margin-top: 30px;
+}
+
+.Mpost h1, .Mpost div, .Mpost span{
+    background-color: white;
+}
+
+.Rflex{
+    display: flex;
+}

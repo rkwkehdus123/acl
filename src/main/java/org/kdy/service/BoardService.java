@@ -1,5 +1,8 @@
 package org.kdy.service;
 
-public class BoardService {
+import org.kdy.domain.BoardDTO;
 
+public interface BoardService {
+	
+	public void write(BoardDTO board);
 }
