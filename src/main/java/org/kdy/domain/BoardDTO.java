@@ -2,18 +2,37 @@ package org.kdy.domain;
 
 public class BoardDTO {
 	private int bno;
+	private String category;
 	private String title;
     private String content;
-    private String writer;
     private String regdate;
     private int cnt;
     private int good;
+
+	@Override
+	public String toString() {
+		return "{" +
+			" bno='" + getBno() + "'" +
+			", category='" + getCategory() + "'" +
+			", title='" + getTitle() + "'" +
+			", content='" + getContent() + "'" +
+			", regdate='" + getRegdate() + "'" +
+			", cnt='" + getCnt() + "'" +
+			", good='" + getGood() + "'" +
+			"}";
+	}
     
     public int getBno() {
 		return bno;
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
+	}
+	public String getCategory() {
+		return this.category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getTitle() {
 		return title;
@@ -26,12 +45,6 @@ public class BoardDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 	public String getRegdate() {
 		return regdate;
@@ -51,11 +64,7 @@ public class BoardDTO {
 	public void setGood(int good) {
 		this.good = good;
 	}
-	@Override
-	public String toString() {
-		return "BoardDTO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", cnt=" + cnt + ", good=" + good + "]";
-	}
+	
 	
 	
 }

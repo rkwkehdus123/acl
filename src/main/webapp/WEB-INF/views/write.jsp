@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/write.css">
+    <link rel="stylesheet" href="write.css">
+</head>
+<body>
+    <header>
+        <div class="login">
+            <a href="#">로그인</a>/
+            <a href="#">로그아웃</a>
+        </div>
+        <h1 class="headh1">
+            <c:if test="${login!=null}"><a href="/main">${login.id}님의 블로그</a></c:if>
+        </h1>
+    </header>
+    
+    <!-- 아카라이브 글쓰기 참조 -->
+    <div class="container">
+        <div class="Wpost">
+            <form role="form" action="/write" method="post">
+                <div class="writeGo">글쓰기</div>
+                <div class="Wcategory">
+	                <select name="category">
+	                    <option value="Doodle">낙서장</option>
+	                    <option value="diary">일기장</option>
+	                    <option value="travel">여행</option>
+	                    <option value="movie">영화</option>
+	                    <option value="photolog">포토로그</option>
+	                </select>
+                </div>
+                <div>
+                    <label class="titletext" >제목</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="img">
+                    <a href=""><img src="../resources/image/image-solid.svg" alt=""></a>
+                </div>
+                <div><textarea name="content" id="" cols="127" rows="30"></textarea>
+                </div>
+                <button type="submit">작성</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

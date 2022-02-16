@@ -48,6 +48,10 @@ header{
     padding-right: 20px;
 }
 
+.login a{
+    color: black;
+}
+
 .headh1{
     margin-top: 60px;
     margin-left: 30px;
@@ -67,7 +71,7 @@ header{
     background-color: white;
     position: relative;
     height: 730px;
-    border: 3px solid #F4BF3D;
+    border: 1px solid #F4BF3D;
 }
 
 .Wpost div{
@@ -81,6 +85,10 @@ header{
     font-weight: 700;
 }
 
+.Wcategory select, .Wcategory option{
+    background-color: white;
+}
+
 .titletext{
     background-color: rgb(252, 240, 221);
     border: 1px solid #333;
@@ -88,7 +96,7 @@ header{
     
 }
 
-input{
+.Wpost input{
     position: absolute;
     top: 118px;
     width: 870px;
@@ -112,14 +120,15 @@ input{
     background-color: white;
 }
 
-textarea{
+.Wpost textarea{
     border-radius: 10px;
+    padding: 10px;
 }
 
-button{
+.Wpost button{
     position: absolute;
-    bottom: 20px;
-    right: 23px;
+    bottom: 15px;
+    right: 30px;
     padding: 7px 20px;
     background-color: white;
     border: 1px solid #333;
@@ -127,7 +136,6 @@ button{
     cursor: pointer;
 }
 
-input, textarea{
+.Wpost input, .Wpost textarea{
     background-color: white;
 }
-
