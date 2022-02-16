@@ -80,11 +80,13 @@
 	                    <div><span>${maintext.content}</span></div>
 	                </div>
 
-                    <div>
-                        <span>댓글</span>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
-                        <input type="text" placeholder="이름">
-                        <input type="password" placeholder="비밀번호">
+                    <div class="reply">
+                        <h3>댓글</h3>
+                        <textarea name="" id=""></textarea>
+                        <div class="reply_idps">
+                            <input type="text" placeholder="이름">
+                            <input type="password" placeholder="비밀번호">
+                        </div>
                         <button type="submit">등록</button>
                     </div>
                 </c:forEach>
