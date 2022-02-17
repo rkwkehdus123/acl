@@ -11,7 +11,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="../resources/css/main.css">
     <link rel="stylesheet" href="main.css">
-    <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../resources/js/main.js"></script>
 </head>
 <body>
     <header>
@@ -40,6 +41,7 @@
         	<c:if test="${login!=null}"><a href="/main">${login.id}님의 블로그</a></c:if>
 		</h1>
     </header>
+    
     <div class="container">
         <div class="left">
             <div class="profile">
@@ -69,31 +71,76 @@
         </div><!--left 끝-->
         <div class="right">
             <div>
-            	<c:forEach items="${detail}" var="maintext">
-	                <div class="Rcategory"><span>${maintext.category}</span></div>
+            	<c:forEach items="${maindetail}" var="maindetail">
+	                <div class="Rcategory"><span>${maindetail.category}</span></div>
 	                <div class="Mpost">
-	                    <h1>${maintext.title}</h1>
+	                	<div><span>${maindetail.bno}</span></div>
+	                    <h1>${maindetail.title}</h1>
 	                    <div class="Rflex">
 	                        <span>${login.nickname}</span>
-	                        <span>${maintext.regdate}</span>
+	                        <span>${maindetail.regdate}</span>
 	                    </div>
 	                    <div><span>${maintext.content}</span></div>
 	                </div>
 
+                    <div class="detRem">
+                        <div><a href="/modify?bno=${maindetail.bno}">수정</a></div>
+                        <div><a href="/remove?bno=${maindetail.bno}">삭제</a></div>
+                    </div>
+
                     <div class="reply">
                         <h3>댓글</h3>
-                        <textarea name="" id=""></textarea>
+                        <textarea name="" id="" placeholder="댓글을 입력해주세요"></textarea>
                         <div class="reply_idps">
                             <input type="text" placeholder="이름">
                             <input type="password" placeholder="비밀번호">
                         </div>
                         <button type="submit">등록</button>
-                    </div>
+                    </div><!--reply 끝-->
                 </c:forEach>
+                <div class="pageInfo_wrap">
+                    <div class="pageInfo_area">
+                        <ul id="pageInfo" class="pageInfo">
+                            
+                            <!-- 이전페이지 버튼 -->
+                            <c:if test="${pager.prev}">
+                                <li class="pageInfo_btn previous"><a href="${pager.startPage-1}">Previous</a></li>
+                            </c:if>
+
+                            <c:forEach var="num" begin="${pager.startPage}" end="${pager.endPage}">
+                                <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+                            </c:forEach>
+
+                            <!-- 다음페이지 버튼 -->
+                            <c:if test="${pager.next}">
+                                <li class="pageInfo_btn next"><a href="${pager.endPage + 1 }">Next</a></li>
+                            </c:if>   
+                        </ul>
+                    </div>
+                </div>
+                
+                <form id="moveForm" method="get">
+                    <input type="hidden" name="pageNum" value="${pager.cri.pageNum}">
+                    <input type="hidden" name="amount" value="${pager.cri.amount}">
+                </form>
             </div>
         </div><!--right끝-->
     </div><!--container끝-->
         <script>
+            $(document).ready(function(){
+
+            });
+
+            let moveForm = $("#moveForm");
+
+            $(".pageInfo a").on("click", function(e){
+                e.preventDefault();
+                moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+                moveForm.attr("action", "/main");
+                moveForm.submit();
+                
+            });
+
 	        const body = document.querySelector('body');
 	        const modal = document.querySelector('.modal');
 	        const modal_open = document.querySelector('.modal_open');

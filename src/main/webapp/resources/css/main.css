@@ -46,6 +46,7 @@ header{
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1050;
 
     width: 100%;
     height: 100%;
@@ -209,9 +210,32 @@ header{
     margin-right: 40px;
 }
 
+.detRem{
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+}
+
+.detRem div{
+    border: 1px solid #333;
+}
+
+.detRem div:last-child{
+    margin-right: 50px;
+    margin-left: -1px;
+}
+
+.detRem a{
+    display: inline-block;
+    padding: 7px 20px;
+    color: #333;
+    background-color: white;
+}
+
 .reply{
     padding-left: 30px;
     position: relative;
+    margin-bottom: 100px;
 }
 
 .reply h3{
@@ -223,12 +247,15 @@ header{
 }
 
 .reply textarea{
-    width: 507px;
-    height: 90px;
+    width: 701px;
+    height: 80px;
+    resize: none;
 }
 
 .reply input, .reply textarea, .reply button{
     border: 1px solid #333;
+    padding: 10px;
+    color: #333;
 }
 
 .reply_idps{
@@ -236,9 +263,10 @@ header{
 }
 
 .reply_idps input{
-    width: 253px;
-    height: 30px;
+    width: 340px;
+    height: 20px;
     margin-bottom: 80px;
+    background-color: #E8F0FD;
 }
 
 .reply_idps input:last-child{
@@ -248,7 +276,7 @@ header{
 
 .reply button{
     position: absolute;
-    right: 260px;
+    right: 50px;
     bottom: 20px;
     padding: 10px 20px;
     border-radius: 20px;

@@ -3,6 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kdy.mapper.BoardMapper">
+
+	<select id="list" resultType="org.kdy.domain.BoardDTO">
+    	select * from (
+            select bno, category, title, content, regdate
+            from board order by bno desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount}
+ 
+    </select>
+    
 	<insert id="write">
         insert into board(category,title,content,regdate)
         values(
@@ -26,8 +36,49 @@
         ,#{title},#{content},now())
     </insert>
 
-    <select id="detail" resultType="org.kdy.domain.BoardDTO">
+	<select id="maindetail" resultType="org.kdy.domain.BoardDTO">
       select *
       from board
     </select>
+
+    <select id="detail" resultType="org.kdy.domain.BoardDTO">
+      select *
+      from board
+      where bno=#{bno}
+    </select>
+    
+    <update id="modify">
+    	update board
+    	set category=
+			    	<choose>
+						<when test="category == 'Doodle'.toString()">
+							'낙서장'
+						</when>
+						<when test="category == 'diary'.toString()">
+							'일기장'
+						</when>
+						<when test="category == 'travel'.toString()">
+							'여행'
+						</when>
+						<when test="category == 'movie'.toString()">
+							'영화'
+						</when>
+						<when test='category == "photolog"'>
+							'포토로그'
+						</when>
+					</choose>,
+    		title=#{title},
+    		content=#{content}
+    	where bno=#{bno}
+    </update>
+
+	<delete id="remove">
+    	delete from board
+    	where bno=#{bno}
+    </delete>
+
+	<select id="total" resultType="int">
+		select count(*) 
+		from board
+	</select>
 </mapper>

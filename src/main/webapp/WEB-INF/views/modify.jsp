@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/write.css">
-    <link rel="stylesheet" href="write.css">
+    <link rel="stylesheet" href="../resources/css/modify.css">
+    <link rel="stylesheet" href="modify.css">
 </head>
 <body>
     <header>
@@ -43,7 +43,7 @@
     <!-- 아카라이브 글쓰기 참조 -->
     <div class="container">
         <div class="Wpost">
-            <form role="form" action="/write" method="post">
+            <form action="/modify" method="post">
                 <div class="writeGo">글쓰기</div>
                 <div class="Wcategory">
 	                <select name="category">
@@ -54,16 +54,17 @@
 	                    <option value="photolog">포토로그</option>
 	                </select>
                 </div>
+                <div><input type="text" value="${detail.bno}" name="bno" hidden></div>
                 <div>
                     <label class="titletext" >제목</label>
-                    <input type="text" name="title">
+                    <input class="titleinput" type="text" value="${detail.title}" name="title">
                 </div>
                 <div class="img">
                     <a href=""><img src="../resources/image/image-solid.svg" alt=""></a>
                 </div>
-                <div><textarea name="content" id="" cols="127" rows="30"></textarea>
+                <div><textarea name="content" id="" cols="127" rows="30">${detail.content}</textarea>
                 </div>
-                <button type="submit">작성</button>
+                <button type="submit">수정</button>
             </form>
         </div>
     </div>
