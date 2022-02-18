@@ -14,12 +14,8 @@ public class BoardServiceimpl implements BoardService{
     @Autowired
     private BoardMapper bMapper;
 
-    public ArrayList<BoardDTO> maindetail() {
-        return bMapper.maindetail();
-    }
-
-    public ArrayList<BoardDTO> list(Criteria cri) {
-        return bMapper.list(cri);
+    public ArrayList<BoardDTO> maindetail(Criteria cri) {
+        return bMapper.maindetail(cri);
     }
 
 
@@ -39,7 +35,11 @@ public class BoardServiceimpl implements BoardService{
         bMapper.remove(board);
     }
 
-    public int total() {
-        return bMapper.total();
+    public int total(Criteria cri) {
+        return bMapper.total(cri);
+    }
+
+    public int realtotal() {
+        return bMapper.realtotal();
     }
 }

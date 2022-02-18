@@ -20,13 +20,16 @@ public class BoardController {
     
   @GetMapping("main")
   public void maindetail(Model model, Criteria cri) {
-      model.addAttribute("maindetail", service.list(cri));
+      model.addAttribute("maindetail", service.maindetail(cri));
 
-      int total = service.total();
+      int total = service.total(cri);
       PageDTO pDto = new PageDTO(cri, total);
       model.addAttribute("pager", pDto);
+
+      int realtotal = service.realtotal();
+      model.addAttribute("realtotal", realtotal);
   }
-    
+  
   @GetMapping("write")
   public void write() {
     

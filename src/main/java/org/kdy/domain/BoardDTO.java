@@ -2,6 +2,7 @@ package org.kdy.domain;
 
 public class BoardDTO {
 	private int bno;
+	private String nickname;
 	private String category;
 	private String title;
     private String content;
@@ -13,6 +14,7 @@ public class BoardDTO {
 	public String toString() {
 		return "{" +
 			" bno='" + getBno() + "'" +
+			", nickname='" + getNickname() + "'" +
 			", category='" + getCategory() + "'" +
 			", title='" + getTitle() + "'" +
 			", content='" + getContent() + "'" +
@@ -21,12 +23,18 @@ public class BoardDTO {
 			", good='" + getGood() + "'" +
 			"}";
 	}
-    
+ 
     public int getBno() {
 		return bno;
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
+	}
+	public String getNickname() {
+		return this.nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getCategory() {
 		return this.category;

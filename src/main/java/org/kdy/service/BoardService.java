@@ -8,9 +8,7 @@ import org.kdy.domain.Criteria;
 
 public interface BoardService {
 	
-	public ArrayList<BoardDTO> maindetail();
-
-	public ArrayList<BoardDTO> list(Criteria cri);
+	public ArrayList<BoardDTO> maindetail(Criteria cri);
 
 	public void write(BoardDTO board);
 	
@@ -20,5 +18,7 @@ public interface BoardService {
 
 	public void remove(BoardDTO board);
 
-	public int total();
+	public int total(Criteria cri);
+
+	public int realtotal();
 }

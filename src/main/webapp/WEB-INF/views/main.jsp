@@ -15,32 +15,7 @@
     <script src="../resources/js/main.js"></script>
 </head>
 <body>
-    <header>
-    	<div class="modal">
-            <form action="/login" method="post">
-                <div class="modal_body">
-                    <h1>로그인</h1>
-                    <div class="modal_idps">
-                        <input type="text" name="id" placeholder="아이디">
-                        <input type="password" name="password" placeholder="비밀번호">
-                    </div>
-                    <button type="submit" class="modal_login">로그인</button>
-                </div>
-            </form>
-        </div>
-	    
-        <div class="login">
-        	<c:if test="${login==null}">
-            	<a href="#" class="modal_open">로그인하기</a>
-            </c:if>
-            <c:if test="${login!=null}">
-            	<a href="/logout">로그아웃하기</a>
-            </c:if>
-        </div>
-        <h1 class="headh1">
-        	<c:if test="${login!=null}"><a href="/main">${login.id}님의 블로그</a></c:if>
-		</h1>
-    </header>
+    <%@include file="header.jsp"%>
     
     <div class="container">
         <div class="left">
@@ -57,7 +32,7 @@
             <div class="Lcategory">
                 <span>카테고리</span>
                 <ul>
-                    <li>전체보기({전체글갯수})</li>
+                    <li>전체보기(${realtotal})</li>
                     <li>낙서장</li>
                     <li>일기장</li>
                     <li>여행</li>
@@ -65,6 +40,16 @@
                     <li>포토로그</li>
                 </ul>
             </div>
+            <div class="search">
+                <input type="text" name="keyword" value="${pager.cri.keyword}" placeholder="검색창">
+                <select name="type">
+                    <option value="TC" selected <c:out value="${pager.cri.type eq 'TC'?'selected':'' }"/>>전체</option>
+                    <option value="T" <c:out value="${pager.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+                    <option value="C" <c:out value="${pager.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+                </select>
+                <button>검색</button>
+            </div>
+
             <div class="datepicker">
                 <span>대충 달력</span>
             </div>
@@ -74,13 +59,13 @@
             	<c:forEach items="${maindetail}" var="maindetail">
 	                <div class="Rcategory"><span>${maindetail.category}</span></div>
 	                <div class="Mpost">
-	                	<div><span>${maindetail.bno}</span></div>
+	                	<div><input type="text" value="${maindetail.bno}" hidden></input></div>
 	                    <h1>${maindetail.title}</h1>
 	                    <div class="Rflex">
-	                        <span>${login.nickname}</span>
+	                        <span>${maindetail.nickname}</span>
 	                        <span>${maindetail.regdate}</span>
 	                    </div>
-	                    <div><span>${maintext.content}</span></div>
+	                    <div><span>${maindetail.content}</span></div>
 	                </div>
 
                     <div class="detRem">
@@ -90,12 +75,12 @@
 
                     <div class="reply">
                         <h3>댓글</h3>
-                        <textarea name="" id="" placeholder="댓글을 입력해주세요"></textarea>
+                        <textarea name="reply" id="reply" placeholder="댓글을 입력해주세요"></textarea>
                         <div class="reply_idps">
-                            <input type="text" placeholder="이름">
-                            <input type="password" placeholder="비밀번호">
+                            <input type="text" id="replyer" name="replyer" placeholder="이름">
+                            <input type="password" id="password" name="password" placeholder="비밀번호">
                         </div>
-                        <button type="submit">등록</button>
+                        <button type="submit" class="enroll_btn">등록</button>
                     </div><!--reply 끝-->
                 </c:forEach>
                 <div class="pageInfo_wrap">
@@ -108,20 +93,22 @@
                             </c:if>
 
                             <c:forEach var="num" begin="${pager.startPage}" end="${pager.endPage}">
-                                <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+                                <li class="pageInfo_btn ${pager.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
                             </c:forEach>
 
                             <!-- 다음페이지 버튼 -->
                             <c:if test="${pager.next}">
-                                <li class="pageInfo_btn next"><a href="${pager.endPage + 1 }">Next</a></li>
+                                <li class="pageInfo_btn next" ><a href="${pager.endPage + 1 }">Next</a></li>
                             </c:if>   
                         </ul>
                     </div>
-                </div>
+                </div><!--페이저 끝-->>
                 
                 <form id="moveForm" method="get">
                     <input type="hidden" name="pageNum" value="${pager.cri.pageNum}">
                     <input type="hidden" name="amount" value="${pager.cri.amount}">
+                    <input type="hidden" name="keyword" value="${pager.cri.keyword }">
+                    <input type="hidden" name="type" value="${pager.cri.type }">
                 </form>
             </div>
         </div><!--right끝-->
@@ -131,6 +118,7 @@
 
             });
 
+            // 페이저&검색 기능
             let moveForm = $("#moveForm");
 
             $(".pageInfo a").on("click", function(e){
@@ -138,9 +126,58 @@
                 moveForm.find("input[name='pageNum']").val($(this).attr("href"));
                 moveForm.attr("action", "/main");
                 moveForm.submit();
-                
             });
 
+            $(".search button").on("click", function(e){
+                e.preventDefault();
+                
+                let type = $(".search select").val();
+                let keyword = $(".search input[name='keyword']").val();
+                
+                if(!type){
+                    alert("검색 종류를 선택하세요.");
+                    return false;
+                }
+                
+                if(!keyword){
+                    alert("키워드를 입력하세요.");
+                    return false;
+                }        
+                
+                moveForm.find("input[name='type']").val(type);
+                moveForm.find("input[name='keyword']").val(keyword);
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            // 페이저&검색 기능 끝
+
+            $(".enroll_btn").on("click", function(e){
+
+                const reply = $("#reply").val();
+                const replyer = $("#replyer").val();
+                const password = $("#password").val();
+
+                const data = {
+                    reply : reply,
+                    replyer : replyer,
+                    password : password
+                }
+                $.ajax({
+                    data : data,
+                    type : 'POST',
+                    url : '/reply/write',
+                    success : function(result){
+                        if(callback)
+                            callback(result);
+                    }
+                    
+                });	
+
+            });
+            
+
+
+            // 모달
 	        const body = document.querySelector('body');
 	        const modal = document.querySelector('.modal');
 	        const modal_open = document.querySelector('.modal_open');
@@ -162,6 +199,7 @@
 	                }
 	            }
 	        });
+            // 모달 끝
     	</script>
 </body>
 </html>

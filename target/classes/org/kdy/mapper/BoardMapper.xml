@@ -4,14 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kdy.mapper.BoardMapper">
 
-	<select id="list" resultType="org.kdy.domain.BoardDTO">
+	<select id="maindetail" resultType="org.kdy.domain.BoardDTO">
     	select * from (
-            select bno, category, title, content, regdate
-            from board order by bno desc) as T1 
+            select bno, nickname, category, title, content, regdate
+            from board 
+            <if test="keyword != null">
+                <include refid="criteria"></include>
+            </if>
+            order by bno desc) as T1 
         <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
         limit #{skip},#{amount}
- 
-    </select>
+ 	</select>
     
 	<insert id="write">
         insert into board(category,title,content,regdate)
@@ -35,11 +38,6 @@
 		</choose>
         ,#{title},#{content},now())
     </insert>
-
-	<select id="maindetail" resultType="org.kdy.domain.BoardDTO">
-      select *
-      from board
-    </select>
 
     <select id="detail" resultType="org.kdy.domain.BoardDTO">
       select *
@@ -78,7 +76,32 @@
     </delete>
 
 	<select id="total" resultType="int">
-		select count(*) 
+		select count(*)
+		from board
+		<if test="keyword != null">
+            <include refid="criteria"></include>
+        </if>
+	</select>
+
+	<sql id="criteria">
+        <trim prefix="where (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title like concat('%',#{keyword},'%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content like concat('%',#{keyword},'%')
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+	<select id="realtotal" resultType="int">
+		select count(*)
 		from board
 	</select>
 </mapper>

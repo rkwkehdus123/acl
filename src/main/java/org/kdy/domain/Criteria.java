@@ -8,13 +8,47 @@ public class Criteria {
 
     private int skip;
 
+    private String keyword;
+
+    private String type;
+
+    private String[] typeArr;
+
     @Override
     public String toString() {
         return "{" +
             " pageNum='" + getPageNum() + "'" +
             ", amount='" + getAmount() + "'" +
             ", skip='" + getSkip() + "'" +
+            ", keyword='" + getKeyword() + "'" +
+            ", type='" + getType() + "'" +
+            ", typeArr='" + getTypeArr() + "'" +
             "}";
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+        this.typeArr = type.split("");
+    }
+
+    public String[] getTypeArr() {
+        return this.typeArr;
+    }
+
+    public void setTypeArr(String[] typeArr) {
+        this.typeArr = typeArr;
+    }
+
+    public String getKeyword() {
+        return this.keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public int getPageNum() {

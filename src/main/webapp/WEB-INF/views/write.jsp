@@ -13,32 +13,7 @@
     <link rel="stylesheet" href="write.css">
 </head>
 <body>
-    <header>
-    	<div class="modal">
-            <form action="/login" method="post">
-                <div class="modal_body">
-                    <h1>로그인</h1>
-                    <div class="modal_idps">
-                        <input type="text" name="id" placeholder="아이디">
-                        <input type="password" name="password" placeholder="비밀번호">
-                    </div>
-                    <button type="submit" class="modal_login">로그인</button>
-                </div>
-            </form>
-        </div>
-	    
-        <div class="login">
-        	<c:if test="${login==null}">
-            	<a href="#" class="modal_open">로그인하기</a>
-            </c:if>
-            <c:if test="${login!=null}">
-            	<a href="/logout">로그아웃하기</a>
-            </c:if>
-        </div>
-        <h1 class="headh1">
-        	<c:if test="${login!=null}"><a href="/main">${login.id}님의 블로그</a></c:if>
-		</h1>
-    </header>
+    <%@include file="header.jsp"%>
     
     <!-- 아카라이브 글쓰기 참조 -->
     <div class="container">
