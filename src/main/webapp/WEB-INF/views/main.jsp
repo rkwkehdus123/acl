@@ -56,10 +56,11 @@
         </div><!--left 끝-->
         <div class="right">
             <div>
-            	<c:forEach items="${maindetail}" var="maindetail">
+            	<c:forEach items="${maindetail}" var="maindetail" varStatus="status">
 	                <div class="Rcategory"><span>${maindetail.category}</span></div>
 	                <div class="Mpost">
-	                	<div><input type="text" value="${maindetail.bno}" hidden></input></div>
+	                	<div><input type="text" value="${maindetail.bno}"></input></div>
+	                	<c:out value="${status.index}" /> / <c:out value="${status.index}" />
 	                    <h1>${maindetail.title}</h1>
 	                    <div class="Rflex">
 	                        <span>${maindetail.nickname}</span>
@@ -73,7 +74,52 @@
                         <div><a href="/remove?bno=${maindetail.bno}">삭제</a></div>
                     </div>
 
-                    <div class="reply">
+                    <!-- 댓글 영역 -->
+                    <div class="board__reply">
+                        <input id="bno" type="text" value="${maindetail.bno}">
+                            <h3>댓글</h3>
+                            <div>
+                            <textarea id="reply<c:out value="${status.index}"/>" maxlength="1000" cols="125" rows="3" required></textarea>
+                            <div class="board__reply-bottom">
+                                <label for="replyer">작성자</label>
+                                <input id="replyer<c:out value="${status.index}"/>" type="text"/>
+                                <button id="addReply<c:out value="${status.index}"/>">댓글 작성</button>
+                            </div>
+                            </div>
+                        <div>
+                        <ul id="relist<c:out value="${status.index}"/>">
+                        </ul>
+                        </div>
+                        
+                        <!-- Modal -->
+                        <div class="replymodal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">댓글 수정하기</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-rno">
+                                <input type="hidden" name="rno">
+                                </div>
+                                <div class="modal-replyer">
+                                <label>Replyer</label>
+                                <input type="text" name="replyer" readonly>
+                                </div>
+                                <div class="modal-reply">
+                                <label>Reply</label>
+                                <input type="text" name="reply">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="insideModBtn">수정하기</button>
+                                <button type="button" id="insideCloseBtn">Close</button>
+                            </div>
+                        </div>   <!-- .modal-content 끝 -->
+                        </div>   <!-- .modal 끝 -->
+                        
+                    </div>
+                   
+                    <!-- <div class="reply">
                         <h3>댓글</h3>
                         <textarea name="reply" id="reply" placeholder="댓글을 입력해주세요"></textarea>
                         <div class="reply_idps">
@@ -81,8 +127,9 @@
                             <input type="password" id="password" name="password" placeholder="비밀번호">
                         </div>
                         <button type="submit" class="enroll_btn">등록</button>
-                    </div><!--reply 끝-->
+                    </div>reply 끝 -->
                 </c:forEach>
+                
                 <div class="pageInfo_wrap">
                     <div class="pageInfo_area">
                         <ul id="pageInfo" class="pageInfo">
@@ -133,11 +180,6 @@
                 
                 let type = $(".search select").val();
                 let keyword = $(".search input[name='keyword']").val();
-                
-                if(!type){
-                    alert("검색 종류를 선택하세요.");
-                    return false;
-                }
                 
                 if(!keyword){
                     alert("키워드를 입력하세요.");
