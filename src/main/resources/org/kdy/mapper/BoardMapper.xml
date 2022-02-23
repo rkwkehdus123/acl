@@ -17,8 +17,8 @@
  	</select>
     
 	<insert id="write">
-        insert into board(category,title,content,regdate)
-        values(
+        insert into board(nickname,category,title,content,regdate)
+        values(#{nickname},
         <choose>
 			<when test="category == 'Doodle'.toString()">
 				'낙서장'

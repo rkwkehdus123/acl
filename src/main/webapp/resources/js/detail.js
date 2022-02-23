@@ -5,63 +5,53 @@
 $(document).ready(function(){
    // 게시물 번호 가져오기
    let bno = $("#bno").val();
-   console.log(bno);
    
    // showList 함수를 실행함으로써 로딩되는 즉시 목록 리스트가 보여짐
    showList();
    
    // showList 함수 선언
    function showList() {
-	  for (let i=0; i<bno; i++) {
-		  let bno2 = bno - i;
-		  replyService.getList({bno:bno2}, function(list){
-			  
-			  var str="";
-			  
-			  for(var j=0; j<list.length; j++){
-				  str+="<li class='replyList' data-rno='"+list[j].rno+"'>";
-				  str+="<div><p><b>"+list[j].replyer+"</b></p>" + "<p>"+list[j].reply+"</p></div>";
-				  str+="<div><button class='modBtn' data-rno='"+list[j].rno+"'>수정</button><button class='removeBtn' data-rno='"+list[j].rno+"'>삭제</button></div>"
-				  str+="</li><br>";
-			  }
-			  
-			  $("#relist"+i).html(str);
-		  });
-	  }
-	  
+      replyService.getList({bno:bno}, function(list){
+         
+         var str="";
+         
+         for(var i=0; i<list.length; i++){
+            str+="<li class='replyList' data-rno='"+list[i].rno+"'>";
+            str+="<div><p><b>"+list[i].replyer+"</b></p>" + "<p>"+list[i].reply+"</p></div>";
+            str+="<div><button class='modBtn' data-rno='"+list[i].rno+"'>수정</button><button class='removeBtn' data-rno='"+list[i].rno+"'>삭제</button></div>"
+            str+="</li><br>";
+         }
+         
+         $("#relist").html(str);
+      });
    }   
    // showList 함수 선언 끝
-   for(let i=0; i<bno; i++) {
-	   // 댓글 작성 버튼을 클릭하면
-	   $("#addReply"+i).on("click",function() {
-		   let bno2 = bno-i;
-		   if($("#reply"+i).val() != "" && $("#replyer"+i).val() != ""){
-			   //사용자가 입력한 댓글 내용을 저장
-			   let reply = $("#reply"+i).val();
-			   //사용자가 입력한 댓글 작성자를 저장
-			   let replyer = $("#replyer"+i).val();
-			   
-			   console.log(bno2,reply,replyer);
-			   	
-			   
-			   replyService.add({reply:reply, replyer:replyer, bno:bno2},
-					   function(result){
-				   alert("댓글 작성 : " + result);
-				   showList();
-			   }
-			   );
-			   $("#reply"+i).val("");
-			   $("#replyer"+i).val("");
-		   } else {
-			   alert("댓글 내용을 입력해주세요!");
-			   $("#reply"+i).val("");
-			   $("#replyer"+i).val("");
-		   }
-		   
-	   // 댓글 작성 버튼 클릭 끝
-	   
-	   
-   })}
+   
+      // 댓글 작성 버튼을 클릭하면
+      $(".board__reply #addReply").on("click",function() {
+         if($("#reply").val() != "" && $("#replyer").val() != ""){
+            //사용자가 입력한 댓글 내용을 저장
+            let reply = $("#reply").val();
+            //사용자가 입력한 댓글 작성자를 저장
+            let replyer = $("#replyer").val();
+            
+            
+            replyService.add({reply:reply, replyer:replyer, bno:bno},
+                  function(result){
+               alert("댓글 작성 : " + result);
+               showList();
+            }
+            );
+            $("#reply").val("");
+            $("#replyer").val("");
+         } else {
+            alert("댓글 내용을 입력해주세요!");
+            $("#reply").val("");
+            $("#replyer").val("");
+         }
+      })   
+      // 댓글 작성 버튼 클릭 끝
+   
    
    
    
@@ -76,8 +66,6 @@ $(document).ready(function(){
          // rno값 가져오기 (for문에 사용했던 data-rno)
          const rno = $(this).data("rno");
          
-         console.log(rno);
-         
          replyService.reDetail(rno,function(detail){
             $("input[name='rno']").val(rno);
             $("input[name='replyer']").val(detail.replyer);
@@ -88,9 +76,8 @@ $(document).ready(function(){
    
       
       // 댓글 update
-      $(".replymodal").on("click","#insideModBtn",function(){	// 이벤트 델리게이트.
-    	 alert("aaa");
-         const reply = {rno:$("input[name='rno']").val(), reply:$("input[name='reply']").val()};
+      $("#insideModBtn").on("click", function(){
+         var reply = {rno:$("input[name='rno']").val(), reply:$("input[name='reply']").val()};
          
          replyService.reUpdate(reply, function(result) {
             alert("댓글 수정 : " + result);
@@ -102,7 +89,9 @@ $(document).ready(function(){
       })
       // 댓글 update 끝
       
-     
+      
+   $("#insideModBtn").on("click", function(){
+   })
    
    $("#insideCloseBtn").on("click", function(){
       $(".replymodal").css("display", "none");
@@ -158,7 +147,7 @@ var replyService=(function(){
    function getList(param, callback) {
       let bno = param.bno;
       $.getJSON(
-            "/replies/main/"+bno+".json",
+            "/replies/detail/"+bno+".json",
             function(data){
                if (callback)
                   callback(data);

@@ -31,7 +31,7 @@ public class ReplyController {
                    :new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
     
-    @GetMapping(value="main/{bno}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @GetMapping(value="detail/{bno}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseEntity<ArrayList<ReplyDTO>> getList(@PathVariable int bno) {
        return new ResponseEntity<>(rService.list(bno),HttpStatus.OK);
     }

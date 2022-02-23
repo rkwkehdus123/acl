@@ -9,10 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/main.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/left.css">
+    <link rel="stylesheet" href="../resources/css/detail.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../resources/js/detail.js"></script>
 </head>
 <body>
     <%@include file="header.jsp"%>
@@ -20,25 +21,61 @@
     <div class="container">
         <%@include file="left.jsp"%>
         <div class="right">
-            <div>
-            	<c:forEach items="${maindetail}" var="maindetail" varStatus="status">
-	                <div class="Rcategory"><span>${maindetail.category}</span></div>
-	                <div class="Mpost">
-	                	<div><input id="bno" type="text" value="${maindetail.bno}"></input></div>
-	                	<c:out value="${status.index}" /> / <c:out value="${maindetail.bno}" />
-	                    <h1><a href="/detail?bno=${maindetail.bno}">${maindetail.title}</a></h1>
-	                    <div class="Rflex">
-	                        <span>${maindetail.nickname}</span>
-	                        <span>${maindetail.regdate}</span>
-	                    </div>
-	                    <div class="content">${maindetail.content}</div>
-	                </div>
-                    <div class="detRem">
-                        <div><a href="/modify?bno=${maindetail.bno}">수정</a></div>
-                        <div><a href="/remove?bno=${maindetail.bno}">삭제</a></div>
-                    </div>
-                </c:forEach>
+            <div class="detail">
+                <input type="text" id="bno" value="${detail.bno}" name="bno" hidden>
+                <h1>${detail.title}</h1>
+                <div class="dFlex">
+                    <span class="nickname">${detail.nickname}</span>
+                    <span class="regdate">${detail.regdate}</span>
+                </div>
+                <span class="content">${detail.content}</span>
             </div>
+            
+            <!-- 댓글 영역 -->
+            <div class="board__reply">
+                <input id="bno" type="hidden" value="${detail.bno}">
+                <h3>댓글</h3>
+                <div>
+                    <textarea id="reply" cols="100" rows="3" required></textarea>
+                    <div class="board__reply-bottom">
+                        <label for="replyer">작성자</label>
+                        <input id="replyer" type="text"/>
+                        <button id="addReply">댓글 작성</button>
+                    </div>
+                </div>
+                <div>
+                    <ul id="relist">
+                    </ul>
+                </div>
+              
+                <!-- Modal -->
+                <div class="replymodal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">댓글 수정하기</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-rno">
+                                <input type="hidden" name="rno">
+                            </div>
+                            <div class="modal-replyer">
+                                <label>Replyer</label>
+                                <input type="text" name="replyer">
+                            </div>
+                            <div class="modal-reply">
+                                <label>Reply</label>
+                                <input type="text" name="reply">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="insideModBtn">수정하기</button>
+                            <button type="button" id="insideCloseBtn">Close</button>
+                        </div>
+                    </div>   <!-- .modal-content 끝 -->
+                </div>   <!-- .modal 끝 -->
+                
+           </div>
+                    
             <div class="pageInfo_wrap">
                 <div class="pageInfo_area">
                     <ul id="pageInfo" class="pageInfo">
@@ -88,7 +125,7 @@
                 if(!keyword){
                     alert("키워드를 입력하세요.");
                     return false;
-                }        
+                }
                 
                 moveForm.find("input[name='type']").val(type);
                 moveForm.find("input[name='keyword']").val(keyword);
@@ -96,6 +133,11 @@
                 moveForm.submit();
             });
             // 페이저&검색 기능 끝
+            
+            
+            if($("#bno")==null){
+            	$("#board__reply").hide;
+            }
         </script>
     <script src="../resources/js/header.js"></script>
 </body>

@@ -42,87 +42,8 @@ a{
     margin: 50px auto 0 auto;
 }
 
-.left{
-    width: 200px;
-    color: #F4BF3D;
-}
-
-.profile_image{
-    width: 180px;
-    height: 180px;
-    background-color: white;
-    margin-top: 40px;
-}
-
-.profile_text{
-    margin-top: 15px;
-    margin-left: 10px;
-    line-height: 2em;
-}
-
-.Lcategory{
-    margin-top: 25px;
-    margin-left: 10px;
-    line-height: 2em;
-    margin-bottom: 40px;
-}
-
-.Lcategory span{
-    font-weight: bold;
-}
-
-.Lcategory li{
-    color: white;
-}
-
-.search{
-	position: relative;
-	height: 50px;
-	margin-bottom: 40px;
-}
-
-.search input, .search select, .search option, .search button{
-    background-color: white;
-    border: 1px solid #F4BF3D;
-    height: 30px;
-    padding: 7px;
-}
-
-.search input{
-    height: 20px;
-    border-radius:7px 7px 0 0 / 7px 7px 0 0;
-}
-
-.search select{
-    position: absolute;
-    bottom: -15px;
-    left: 0px;
-    width: 95px;
-    font-weight: bold;
-    background-color: #E8F0FD;
-    border-radius: 0 0 0 5px / 0 0 0 5px;
-}
-
-.search button{
-    padding: 5px 31px 9px 31px;
-    position: absolute;
-    bottom: -15px;
-    right: 15px;
-    font-weight: bold;
-    background-color: rgb(252, 240, 221);
-    border-radius: 0 0 5px 0 / 0 0 5px 0;
-}
-
-.datepicker{
-    margin-top: 25px;
-}
-
-.datepicker span{
-    margin-left: 10px;
-}
-
 .right{
-    width: 800px;;
+    width: 800px;
 }
 
 .Rcategory{
@@ -137,12 +58,23 @@ a{
 .Mpost{
     margin-top: 30px;
     line-height: 6em;
-    padding-left: 30px;
+    padding-left: 40px;
+    background-color: white;
+}
+
+.Mpost a{
     background-color: white;
 }
 
 .Mpost h1, .Mpost div, .Mpost span{
     background-color: white;
+}
+
+.content{
+	padding-right: 40px;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow: ellipsis;
 }
 
 .Rflex{
@@ -157,6 +89,8 @@ a{
     display: flex;
     justify-content: flex-end;
     background-color: white;
+    margin-bottom: 100px;
+    padding-bottom: 40px;
 }
 
 .detRem div{
@@ -175,133 +109,21 @@ a{
     background-color: white;
 }
 
-.reply{
-    padding-left: 30px;
-    position: relative;
-    margin-bottom: 100px;
-}
-
-.reply h3{
-    margin-bottom: 10px;
-}
-
-.reply, .reply h3, .reply input, .reply textarea, .reply button, .reply_idps{
-    background-color: white;
-}
-
-.reply textarea{
-    width: 701px;
-    height: 80px;
-    resize: none;
-}
-
-.reply input, .reply textarea, .reply button{
-    border: 1px solid #333;
-    padding: 10px;
-    color: #333;
-}
-
-.reply_idps{
-    margin-top: -8px;
-}
-
-.reply_idps input{
-    width: 340px;
-    height: 20px;
-    margin-bottom: 80px;
-    background-color: #E8F0FD;
-}
-
-.reply_idps input:last-child{
-    margin-left: -5px;
-    border-left: none;
-}
-
-.reply button{
-    position: absolute;
-    right: 50px;
-    bottom: 20px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background-color: rgb(252, 240, 221);
-    cursor: pointer;
-}
-
-.replymodal {
-   position: fixed;
-   top:0;
-   left:0;
-   width: 100%;
-   height: 100%;
-   display: none;
-   background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-   position: absolute;
-   top: 50%; 
-   left: 50%; 
-   width: 250px; 
-   padding: 40px; 
-   text-align: center;
-   background-color: rgb(255, 255, 255); 
-   border-radius: 10px; 
-   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15); 
-   transform: translateX(-50%) translateY(-50%); 
-}
-
-.modal-header {
-   margin-bottom: 30px;
-}
-
-.modal-title {
-   height: 24px;
-   font-size: 24px;
-}
-
-.modal-body {
-   margin-bottom: 25px;
-}
-
-.modal-body label {
-    margin-right: 13px;
-}
-
-.modal-replyer {
-   display: flex;
-    justify-content: center;
-    align-items: center;
-   margin-bottom: 15px;
-}
-
-.modal-reply {
-   display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#insideModBtn, #insideCloseBtn {
-   padding: 5px 7px;
-   margin: 0 6px;
-   border-radius: 9px;
-   color: #333;
-   background-color: rgba(252, 240, 221, 0.9);
-   border: solid 1px rgb(255, 196, 102);
-   cursor: pointer;
-}
-
-
 .pageInfo{
     display: flex;
     justify-content: center;
-    margin-left: 30px;
-    margin-top:-70px
+    margin-top: 40px;
+    margin-bottom: 70px;
 }
 .pageInfo li{
     font-size: 20px;
     padding: 7px;
     font-weight: 500;
     margin:0 5px;
+}
+
+.pageInfo .previous{
+	margin-right: 10px;
 }
 
 .pageInfo a:link {color:white; text-decoration: none;}

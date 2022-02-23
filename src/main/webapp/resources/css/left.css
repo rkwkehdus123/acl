@@ -1,0 +1,78 @@
+.left{
+    width: 200px;
+    color: #F4BF3D;
+}
+
+.profile_image{
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    margin-top: 40px;
+}
+
+.profile_text{
+    margin-top: 15px;
+    margin-left: 10px;
+    line-height: 2em;
+}
+
+.Lcategory{
+    margin-top: 25px;
+    margin-left: 10px;
+    line-height: 2em;
+    margin-bottom: 40px;
+}
+
+.Lcategory span{
+    font-weight: bold;
+}
+
+.Lcategory li{
+    color: white;
+}
+
+.search{
+	position: relative;
+	height: 50px;
+	margin-bottom: 40px;
+}
+
+.search input, .search select, .search option, .search button{
+    background-color: white;
+    border: 1px solid #F4BF3D;
+    height: 30px;
+    padding: 7px;
+}
+
+.search input{
+    height: 20px;
+    border-radius:7px 7px 0 0 / 7px 7px 0 0;
+}
+
+.search select{
+    position: absolute;
+    bottom: -15px;
+    left: 0px;
+    width: 90px;
+    font-weight: bold;
+    background-color: #E8F0FD;
+    border-radius: 0 0 0 5px / 0 0 0 5px;
+}
+
+.search button{
+    padding: 5px 31px 9px 31px;
+    position: absolute;
+    bottom: -15px;
+    right: 21px;
+    font-weight: bold;
+    background-color: rgb(252, 240, 221);
+    border-radius: 0 0 5px 0 / 0 0 5px 0;
+}
+
+.datepicker{
+    margin-top: 25px;
+}
+
+.datepicker span{
+    margin-left: 10px;
+}

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../resources/css/write.css">
-    <link rel="stylesheet" href="write.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
 </head>
 <body>
     <%@include file="header.jsp"%>
@@ -30,17 +30,19 @@
 	                </select>
                 </div>
                 <div>
+                	<input type="hidden" name="nickname" value="${login.nickname}">
                     <label class="titletext" >제목</label>
                     <input type="text" name="title">
                 </div>
                 <div class="img">
                     <a href=""><img src="../resources/image/image-solid.svg" alt=""></a>
                 </div>
-                <div><textarea name="content" id="" cols="127" rows="30"></textarea>
+                <div><textarea name="content" id="" cols="121" rows="27"></textarea>
                 </div>
                 <button type="submit">작성</button>
             </form>
         </div>
     </div>
+    <script src="../resources/js/header.js"></script>
 </body>
 </html>

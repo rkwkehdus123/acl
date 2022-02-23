@@ -41,6 +41,20 @@ public class BoardController {
 	  return "redirect:/main";
   }
 
+  @GetMapping("detail")
+  public void detail(BoardDTO board, Model model, Criteria cri) {
+	  model.addAttribute("detail", service.detail(board));
+
+	  model.addAttribute("maindetail", service.maindetail(cri));
+	  
+	  int realtotal = service.realtotal();
+      model.addAttribute("realtotal", realtotal);
+      
+      int total = service.total(cri);
+      PageDTO pDto = new PageDTO(cri, total);
+      model.addAttribute("pager", pDto);
+  }
+
   @GetMapping("modify")
   public void modify(BoardDTO board, Model model) {
 	  model.addAttribute("detail", service.detail(board));
@@ -58,6 +72,5 @@ public class BoardController {
 	  service.remove(board);
 	  return "redirect:/main";
   }
-    
-
+  
 }
