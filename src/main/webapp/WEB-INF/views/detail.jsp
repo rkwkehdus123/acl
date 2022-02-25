@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>acl</title>
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/left.css">
     <link rel="stylesheet" href="../resources/css/detail.css">
@@ -31,6 +31,14 @@
                 <span class="content">${detail.content}</span>
             </div>
             
+            <div class="subBtns">
+                <div><a href="/main">목록</a></div>
+                <!-- <c:if test="${login!=null}"> -->
+                <div><a href="/modify?bno=${detail.bno}">수정</a></div>
+                <div><a href="/remove?bno=${detail.bno}">삭제</a></div>
+                <!-- </c:if> -->
+            </div>
+
             <!-- 댓글 영역 -->
             <div class="board__reply">
                 <input id="bno" type="hidden" value="${detail.bno}">
@@ -134,10 +142,48 @@
             });
             // 페이저&검색 기능 끝
             
-            
-            if($("#bno")==null){
-            	$("#board__reply").hide;
-            }
+            // 카테고리 선택
+            let Doodle = $("#Doodle")
+            let diary = $("#diary")
+            let travel = $("#travel")
+            let movie = $("#movie")
+            let photolog = $("#photolog") 
+
+            $("#all").on("click", function(){
+                location.href = '/main'
+            })
+
+            $("#Doodle").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('낙서장');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#diary").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('일기장');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#travel").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('여행');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#movie").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('영화');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#photolog").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('포토로그');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+        	// 카테고리 선택 끝
         </script>
     <script src="../resources/js/header.js"></script>
 </body>

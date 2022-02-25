@@ -29,6 +29,7 @@
 
 .Lcategory li{
     color: white;
+    cursor: pointer;
 }
 
 .search{
@@ -60,10 +61,10 @@
 }
 
 .search button{
-    padding: 5px 31px 9px 31px;
+    padding: 5px 33px 9px 34px;
     position: absolute;
     bottom: -15px;
-    right: 21px;
+    left: 89px;
     font-weight: bold;
     background-color: rgb(252, 240, 221);
     border-radius: 0 0 5px 0 / 0 0 5px 0;

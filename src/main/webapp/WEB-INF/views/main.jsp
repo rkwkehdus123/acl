@@ -8,10 +8,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>acl</title>
     <link rel="stylesheet" href="../resources/css/main.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/left.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+	<script>
+	 $(function() {
+	   $( "#datepicker" ).datepicker();
+	 });
+	 </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -24,8 +33,7 @@
             	<c:forEach items="${maindetail}" var="maindetail" varStatus="status">
 	                <div class="Rcategory"><span>${maindetail.category}</span></div>
 	                <div class="Mpost">
-	                	<div><input id="bno" type="text" value="${maindetail.bno}"></input></div>
-	                	<c:out value="${status.index}" /> / <c:out value="${maindetail.bno}" />
+	                	<div><input id="bno" type="text" value="${maindetail.bno}" hidden></input></div>
 	                    <h1><a href="/detail?bno=${maindetail.bno}">${maindetail.title}</a></h1>
 	                    <div class="Rflex">
 	                        <span>${maindetail.nickname}</span>
@@ -33,9 +41,9 @@
 	                    </div>
 	                    <div class="content">${maindetail.content}</div>
 	                </div>
-                    <div class="detRem">
-                        <div><a href="/modify?bno=${maindetail.bno}">수정</a></div>
-                        <div><a href="/remove?bno=${maindetail.bno}">삭제</a></div>
+                    <div class="view">
+                    	<div>댓글 : 0</div>
+                        <div><a href="/detail?bno=${maindetail.bno}">더보기</a></div>
                     </div>
                 </c:forEach>
             </div>
@@ -96,6 +104,50 @@
                 moveForm.submit();
             });
             // 페이저&검색 기능 끝
+
+            // 카테고리 선택
+            let Doodle = $("#Doodle")
+            let diary = $("#diary")
+            let travel = $("#travel")
+            let movie = $("#movie")
+            let photolog = $("#photolog") 
+
+            $("#all").on("click", function(){
+                location.href = '/main'
+            })
+
+            $("#Doodle").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('낙서장');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#diary").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('일기장');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#travel").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('여행');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#movie").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('영화');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+            $("#photolog").on("click", function(){
+                moveForm.find("input[name='type']").val('G');
+                $("input[name='keyword']").val('포토로그');
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+        	// 카테고리 선택 끝
+
         </script>
     <script src="../resources/js/header.js"></script>
 </body>

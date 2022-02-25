@@ -42,4 +42,6 @@ public class BoardServiceimpl implements BoardService{
     public int realtotal() {
         return bMapper.realtotal();
     }
+    
 }
+

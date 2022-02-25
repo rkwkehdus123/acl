@@ -67,12 +67,34 @@ a{
 
 .dFlex span{
     background-color: white;
+    margin-right: 40px;
 }
 
 .content{
     font-size: 17px;
     background-color: white;
     line-height: 3em;
+}
+
+.subBtns{
+    display: flex;
+    justify-content: right;
+    background-color: white;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.subBtns div{
+    background-color: white;
+    margin-left: 10px;
+}
+
+.subBtns a{
+    display: inline-block;
+    padding: 7px 20px;
+    color: #333;
+    background-color: white;
+    border: 1px solid #333;
 }
 
 .board__reply, .board__reply h3, .board__reply input, .board__reply div, .board__reply textarea, .board__reply button, .board__reply label, #relist, #relist li, #relist p, #relist b{

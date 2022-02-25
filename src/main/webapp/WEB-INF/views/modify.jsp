@@ -8,8 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>acl</title>
     <link rel="stylesheet" href="../resources/css/modify.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="modify.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
     <div class="container">
         <div class="Wpost">
             <form action="/modify" method="post">
-                <div class="writeGo">글쓰기</div>
+                <div class="writeGo">글수정</div>
                 <div class="Wcategory">
 	                <select name="category">
 	                    <option value="Doodle">낙서장</option>
@@ -43,5 +44,6 @@
             </form>
         </div>
     </div>
+    <script src="../resources/js/header.js"></script>
 </body>
 </html>

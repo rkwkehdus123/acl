@@ -94,6 +94,9 @@
                         <when test="type == 'C'.toString()">
                             content like concat('%',#{keyword},'%')
                         </when>
+						<when test="type == 'G'.toString()">
+                            category like concat('%',#{keyword},'%')
+                        </when>
                     </choose>
                 </trim>
             </foreach>

@@ -22,3 +22,4 @@ public interface BoardService {
 
 	public int realtotal();
 }
+

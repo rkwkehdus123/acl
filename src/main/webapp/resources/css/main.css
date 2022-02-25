@@ -52,13 +52,14 @@ a{
 }
 
 .Rcategory span{
+    font-weight: bold;
     background-color: white;
 }
 
 .Mpost{
-    margin-top: 30px;
     line-height: 6em;
     padding-left: 40px;
+    padding-right: 40px;
     background-color: white;
 }
 
@@ -70,8 +71,15 @@ a{
     background-color: white;
 }
 
+.Mpost h1{
+    
+    border-bottom: 1px solid #333;
+}
+
 .content{
-	padding-right: 40px;
+	font-size: 17px;
+	padding-right: 70px;
+	padding-bottom: 40px;
 	white-space : nowrap;
 	overflow : hidden;
 	text-overflow: ellipsis;
@@ -85,28 +93,26 @@ a{
     margin-right: 40px;
 }
 
-.detRem{
+.view{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: white;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     padding-bottom: 40px;
 }
 
-.detRem div{
-    border: 1px solid #333;
+.view div{
+    background-color: white;
 }
 
-.detRem div:last-child{
-    margin-right: 50px;
-    margin-left: -1px;
-}
-
-.detRem a{
+.view a{
     display: inline-block;
     padding: 7px 20px;
     color: #333;
     background-color: white;
+    border: 1px solid #333;
 }
 
 .pageInfo{
